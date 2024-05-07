@@ -1,4 +1,4 @@
-export function Navbar() {
+export default function Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
