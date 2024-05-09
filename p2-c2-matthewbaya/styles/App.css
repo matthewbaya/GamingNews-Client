@@ -1,0 +1,12 @@
+.card-container{
+  border: solid;
+  background-color: rebeccapurple;
+  padding: 2rem;
+  margin: 2rem 5rem
+}
+
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 20rem;
+  font-style: normal;
+}
