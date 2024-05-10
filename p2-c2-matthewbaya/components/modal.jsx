@@ -7,6 +7,7 @@ export default function Modal({ categories }) {
   const [content, setContent] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [categoryId, setCategoryId] = useState();
+
   async function createNewArticle() {
     try {
       let response = await axios({
@@ -41,7 +42,7 @@ export default function Modal({ categories }) {
       Swal.fire({
         title: "Error",
         text: "You clicked the button!",
-        icon: "success",
+        icon: "error",
       });
     }
   };

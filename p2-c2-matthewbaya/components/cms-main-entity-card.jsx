@@ -1,4 +1,10 @@
 export default function ArticleCard(props) {
+  const handleDeleteArticle = (e) => {
+    try {
+      e.preventDefault();
+      props.deleteArticle(props.article.id);
+    } catch (error) {}
+  };
   return (
     <>
       <tr>
@@ -11,7 +17,7 @@ export default function ArticleCard(props) {
         <td>{props.article.authorId}</td>
         <td>
           <span className="d-flex">
-            <a href="" className="ms-3">
+            <a href="" className="ms-3" onClick={handleDeleteArticle}>
               <span className="icon material-symbols-outlined text-danger">
                 delete
               </span>

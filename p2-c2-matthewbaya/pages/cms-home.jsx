@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ArticleCard from "../components/cms-main-entity-card";
 import axios from "axios";
 import Modal from "../components/modal";
+import Swal from "sweetalert2";
 
 export default function CmsHomepage() {
   const [articles, setArticles] = useState([]);
@@ -33,6 +34,31 @@ export default function CmsHomepage() {
       console.log(data);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function deleteArticle(id) {
+    try {
+      let response = await axios({
+        method: "DELETE",
+        url: "https://berita-terkini.matthew-baya.online/articles/" + id,
+        headers: {
+          Authorization: localStorage.getItem("access_token"),
+        },
+      });
+      console.log(response);
+      Swal.fire({
+        title: "Post Deleted",
+        text: "byeeeeeee~",
+        icon: "success",
+      });
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: "You clicked the button!",
+        icon: "error",
+      });
     }
   }
 
@@ -205,6 +231,7 @@ export default function CmsHomepage() {
                           key={article.id}
                           article={article}
                           index={index + 1}
+                          deleteArticle={deleteArticle}
                         ></ArticleCard>
                       );
                     })}
