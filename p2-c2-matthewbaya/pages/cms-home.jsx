@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import ArticleCard from "../components/cms-main-entity-card";
 import axios from "axios";
+import Modal from "../components/modal";
 
 export default function CmsHomepage() {
   const [articles, setArticles] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   async function fetchData() {
     try {
       const { data } = await axios({
@@ -20,8 +23,22 @@ export default function CmsHomepage() {
     }
   }
 
+  async function fetchCategories() {
+    try {
+      let { data } = await axios({
+        method: "GET",
+        url: "https://berita-terkini.matthew-baya.online/pub/categories",
+      });
+      setCategories(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchData();
+    fetchCategories();
   }, []);
   return (
     <>
@@ -162,6 +179,7 @@ export default function CmsHomepage() {
               >
                 Add New Post
               </button>
+              <Modal categories={categories}></Modal>
             </div>
             <div className="row">
               <div className="col-12 table-responsive">

@@ -22,7 +22,7 @@ Buatlah web layouting menggunakan HTML dan CSS (boleh menggunakan CSS framework)
 - [ ] **CMS site**
   - [v] Halaman Login
     Pada halaman ini buatlah sebuah form untuk menampung input email dan password user yang digunakan untuk masuk ke CMS
-  - [ ] Halaman list entitas utama . Tampilkan data entity dalam bentuk Tabel .
+  - [v] Halaman list entitas utama . Tampilkan data entity dalam bentuk Tabel .
   - [ ] Navbar / Sidebar yang berfungsi sebagai navigasi halaman.
   - [ ] Halaman create entitas utama
     - Buatlah form yang berfungsi sebagai penampung input data entitas utama yang akan dibuat, sesuaikanlah input dengan dengan tipe yang sesuai. Untuk imgUrl buatlah input bertipe text saja.
@@ -82,12 +82,12 @@ Pastikan setiap pergantian tampilan terjadi secara reaktif dengan tidak me-refre
 
 Project web-client kalian akan terdiri dari beberapa page/route. Silahkan Implementasikan routing pada project web-client kalian:
 
-- [ ] Public site
-  - [ ] Halaman Home/Landing Page
-  - [ ] Halaman Detail
-- [ ] CMS site
-  - [ ] Halaman Login
-  - [ ] Halaman list entitas utama
+- [v] Public site
+  - [v] Halaman Home/Landing Page
+  - [v] Halaman Detail
+- [v] CMS site
+  - [v] Halaman Login
+  - [v] Halaman list entitas utama
   - [ ] Halaman create entitas utama (boleh menggunakan modal)
   - [ ] Halaman edit entitas utama (boleh menggunakan modal)
   - [ ] Halaman upload image untuk entitas utama (boleh menggunakan modal)
