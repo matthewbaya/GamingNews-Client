@@ -3,10 +3,12 @@ import ArticleCard from "../components/cms-main-entity-card";
 import axios from "axios";
 import Modal from "../components/modal";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export default function CmsHomepage() {
   const [articles, setArticles] = useState([]);
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   async function fetchData() {
     try {
@@ -47,11 +49,13 @@ export default function CmsHomepage() {
         },
       });
       console.log(response);
-      Swal.fire({
-        title: "Post Deleted",
-        text: "byeeeeeee~",
-        icon: "success",
-      });
+      if (response) {
+        Swal.fire({
+          title: "Post Deleted",
+          text: "byeeeeeee~",
+          icon: "success",
+        });
+      }
     } catch (error) {
       console.log(error);
       Swal.fire({
@@ -64,6 +68,7 @@ export default function CmsHomepage() {
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
+    navigate("/cms/login");
   };
 
   useEffect(() => {

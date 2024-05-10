@@ -41,6 +41,8 @@ function Homepage() {
                 imgUrl={article.imgUrl}
                 id={article.id}
                 updatedAt={article.updatedAt}
+                category={article.Category.name}
+                username={article.User.username}
               ></Card>
             );
           })}

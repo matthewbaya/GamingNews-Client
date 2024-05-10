@@ -14,7 +14,7 @@ export default function ArticleCard(props) {
         </td>
         <td className="fw-bold">{props.article.title}</td>
         <td>{props.article.createdAt}</td>
-        <td>{props.article.authorId}</td>
+        <td>{props.article.User.username}</td>
         <td>
           <span className="d-flex">
             <a href="" className="ms-3" onClick={handleDeleteArticle}>
