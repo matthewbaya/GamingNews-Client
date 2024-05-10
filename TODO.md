@@ -14,13 +14,13 @@ Struktur Folder:
 Buatlah web layouting menggunakan HTML dan CSS (boleh menggunakan CSS framework) untuk aplikasi client kamu meliputi halaman:
 
 - [ ] **Public site**
-  - [ ] Halaman Home/Landing Page
+  - [] Halaman Home/Landing Page
     - Halaman yang berfungsi untuk menampilkan data Entitas Utama berbentuk Card, tambahkan input search/filter dan pagination pada halaman ini, buatlah halaman ini dengan layout yang rapi dan semenarik mungkin.
-  - [ ] Halaman Detail
+  - [v] Halaman Detail
     - Buatlah Halaman yang berisi detail dari Entitas Utama.
 
 - [ ] **CMS site**
-  - [ ] Halaman Login
+  - [v] Halaman Login
     Pada halaman ini buatlah sebuah form untuk menampung input email dan password user yang digunakan untuk masuk ke CMS
   - [ ] Halaman list entitas utama . Tampilkan data entity dalam bentuk Tabel .
   - [ ] Navbar / Sidebar yang berfungsi sebagai navigasi halaman.

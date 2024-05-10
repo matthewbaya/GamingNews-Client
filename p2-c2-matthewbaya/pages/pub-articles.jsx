@@ -33,12 +33,14 @@ function Homepage() {
       <div className="card-container">
         <div className="d-flex flex-wrap justify-content-center gap-5">
           {articles.map((article, index) => {
+            // article.updatedAt = article.updatedAt.getDate();
             return (
               <Card
                 key={index}
                 title={article.title}
                 imgUrl={article.imgUrl}
                 id={article.id}
+                updatedAt={article.updatedAt}
               ></Card>
             );
           })}

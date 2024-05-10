@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/navbar";
 export default function HomepageDetail() {
-  const [articeDetail, setArticle] = useState({});
+  const [articleDetail, setArticle] = useState({});
   const { id } = useParams();
   async function getArticleDetail() {
     try {
@@ -19,10 +19,19 @@ export default function HomepageDetail() {
   useEffect(() => {
     getArticleDetail();
   }, []);
+  console.log(articleDetail);
   return (
     <>
       <Navbar></Navbar>
-      <h1>ini detail article {articeDetail.id}</h1>
+      <div className="container my-5">
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <img src={articleDetail.imgUrl} className=""></img>
+          <h1>{articleDetail.title}</h1>
+        </div>
+      </div>
+      <div className="container">
+        <p className="article-content">{articleDetail.content}</p>
+      </div>
     </>
   );
 }

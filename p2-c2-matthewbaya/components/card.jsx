@@ -1,28 +1,45 @@
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Card(props) {
-  // const navigate = useNavigate();
-  const { title, imgUrl, id } = props;
+  const navigate = useNavigate();
+  const { title, imgUrl, id, updatedAt } = props;
 
-  // const handleChangePageToArticleDetail = () => {
-  //   setTimeout(() => {
-  //     navigate("/detail/" + id);
-  //   }, 500);
-  // };
+  const handleChangePageToArticleDetail = () => {
+    setTimeout(() => {
+      navigate("/detail/" + id);
+    }, 500);
+  };
 
   return (
     <>
-      <div className="card" style={{ width: "18rem" }}>
-        <img src={imgUrl} className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">{title}</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the cards content.
-          </p>
-          <Link to={"/detail/" + id} className="btn btn-primary">
-            Go somewhere
-          </Link>
+      <div
+        className="card text-dark card-has-bg click-col"
+        style={{
+          width: "30rem",
+          backgroundImage: `url(${imgUrl})`,
+        }}
+        onClick={handleChangePageToArticleDetail}
+      >
+        <img src={imgUrl} className="card-img d-none" alt="..." />
+        <div className="card-img-overlay d-flex flex-column">
+          <div className="card-body">
+            <small className="card-meta mb-2">Category</small>
+            <h4 className="card-title mt-0 ">
+              <p className="text-dark" to={"/detail/" + id}>
+                {title}
+              </p>
+            </h4>
+            <small>
+              <i className="far fa-clock" /> Updated At {updatedAt}
+            </small>
+          </div>
+          <div className="card-footer">
+            <div className="media">
+              <div className="media-body">
+                <h6 className="my-0 text-dark d-block">By $User</h6>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       ;

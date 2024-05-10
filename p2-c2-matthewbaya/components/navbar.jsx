@@ -10,7 +10,10 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{ backgroundColor: "#aaa" }}
+      >
         <div className="container-fluid">
           <Link className="navbar-brand press-start-2p-regular" to={"/"}>
             G<span style={{ color: "orangered" }}>B</span>
