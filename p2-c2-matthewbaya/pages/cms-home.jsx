@@ -62,6 +62,10 @@ export default function CmsHomepage() {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+  };
+
   useEffect(() => {
     fetchData();
     fetchCategories();
@@ -178,7 +182,12 @@ export default function CmsHomepage() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="" id="nav-logout">
+                  <a
+                    className="nav-link"
+                    href=""
+                    id="nav-logout"
+                    onClick={handleLogout}
+                  >
                     <span className="icon material-symbols-outlined me-2">
                       logout
                     </span>
