@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-export default function Modal({ categories }) {
+export default function Modal({ categories, fetchData }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imgUrl, setImgUrl] = useState("");
@@ -23,9 +23,18 @@ export default function Modal({ categories }) {
           categoryId,
         },
       });
+      Swal.fire({
+        title: "Post Created",
+        text: `"${title}"`,
+        icon: "success",
+      });
       console.log(response);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: error.response.data.message[0],
+        icon: "error",
+      });
     }
   }
 
@@ -33,40 +42,17 @@ export default function Modal({ categories }) {
     try {
       e.preventDefault();
       await createNewArticle();
-      Swal.fire({
-        title: "Post Created",
-        text: `"${title}"`,
-        icon: "success",
-      });
+      fetchData();
     } catch (error) {
-      Swal.fire({
-        title: "Error",
-        text: "You clicked the button!",
-        icon: "error",
-      });
+      console.error(error);
     }
   };
 
-  // async function fetchCategories() {
-  //   try {
-  //     let { data } = await axios({
-  //       method: "GET",
-  //       url: "https://berita-terkini.matthew-baya.online/pub/categories",
-  //     });
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchCategories();
-  // }, []);
   return (
     <>
       <div
         className="modal fade"
-        id="exampleModal"
+        id="createNewPostModal"
         tabIndex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -74,7 +60,7 @@ export default function Modal({ categories }) {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
+              <h1 className="modal-title fs-5 text-dark" id="exampleModalLabel">
                 Create new post
               </h1>
               <button

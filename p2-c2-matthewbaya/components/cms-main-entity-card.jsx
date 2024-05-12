@@ -1,9 +1,13 @@
+import { useNavigate, Link } from "react-router-dom";
+
 export default function ArticleCard(props) {
   const handleDeleteArticle = (e) => {
     try {
       e.preventDefault();
       props.deleteArticle(props.article.id);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -22,16 +26,20 @@ export default function ArticleCard(props) {
                 delete
               </span>
             </a>
-            <a href="" className="ms-3">
+            <Link to={"/cms/edit/article/" + props.article.id} className="ms-3">
               <span className="icon material-symbols-outlined text-danger">
                 edit
               </span>
-            </a>
-            <a href="" className="ms-3">
+            </Link>
+            <Link
+              to={"/cms/edit/image/" + props.article.id}
+              href=""
+              className="ms-3"
+            >
               <span className="icon material-symbols-outlined text-danger">
                 image
               </span>
-            </a>
+            </Link>
           </span>
         </td>
       </tr>
