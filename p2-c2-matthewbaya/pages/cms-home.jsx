@@ -6,27 +6,36 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import CmsNavbar from "../components/cms-navbar";
 import CmsSidebar from "../components/cms-sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchArticles,
+  setFetchArticles,
+} from "../features/article/articleSlice";
 
 export default function CmsHomepage() {
-  const [articles, setArticles] = useState([]);
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  async function fetchData() {
-    try {
-      const { data } = await axios({
-        method: "GET",
-        url: "https://berita-terkini.matthew-baya.online/articles",
-        headers: {
-          Authorization: localStorage.getItem("access_token"),
-        },
-      });
-      setArticles(data);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const articleRedux = useSelector((state) => state.articles.list);
+  const dispatch = useDispatch();
+
+  // async function fetchData() {
+  //   try {
+  //     const { data } = await axios({
+  //       method: "GET",
+  //       url: "https://berita-terkini.matthew-baya.online/articles",
+  //       headers: {
+  //         Authorization: localStorage.getItem("access_token"),
+  //       },
+  //     });
+  //     dispatch(setFetchArticles(data));
+  //     console.log(articleRedux);
+  //     // setArticles(data);
+  //     console.log(data, "Fetch articles dari redux");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   async function fetchCategories() {
     try {
@@ -35,42 +44,14 @@ export default function CmsHomepage() {
         url: "https://berita-terkini.matthew-baya.online/pub/categories",
       });
       setCategories(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
-    }
-  }
-
-  async function deleteArticle(id) {
-    try {
-      let response = await axios({
-        method: "DELETE",
-        url: "https://berita-terkini.matthew-baya.online/articles/" + id,
-        headers: {
-          Authorization: localStorage.getItem("access_token"),
-        },
-      });
-      console.log(response);
-      fetchData();
-      if (response) {
-        Swal.fire({
-          title: "Post Deleted",
-          text: "byeeeeeee~",
-          icon: "success",
-        });
-      }
-    } catch (error) {
-      console.log(error);
-      Swal.fire({
-        title: "Error",
-        text: error.response.data.message,
-        icon: "error",
-      });
     }
   }
 
   useEffect(() => {
-    fetchData();
+    dispatch(fetchArticles());
     fetchCategories();
   }, []);
   return (
@@ -114,7 +95,7 @@ export default function CmsHomepage() {
               >
                 Add New Post
               </button>
-              <Modal categories={categories} fetchData={fetchData}></Modal>
+              <Modal categories={categories}></Modal>
             </div>
             <div className="row">
               <div className="col-12 table-responsive">
@@ -134,15 +115,13 @@ export default function CmsHomepage() {
                     </tr>
                   </thead>
                   <tbody id="table-product">
-                    {articles.map((article, index) => {
+                    {articleRedux.map((article, index) => {
                       return (
                         <ArticleCard
                           key={article.id}
                           article={article}
                           index={index + 1}
-                          deleteArticle={deleteArticle}
                           categories={categories}
-                          fetchData={fetchData}
                         ></ArticleCard>
                       );
                     })}

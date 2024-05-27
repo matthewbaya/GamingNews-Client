@@ -15,7 +15,9 @@ export default function Login() {
         url: "https://berita-terkini.matthew-baya.online/users/login",
         data: { email, password },
       });
+      localStorage.setItem("user_role", data.role);
       localStorage.setItem("access_token", `Bearer ${data.access_token}`);
+
       console.log(data);
       navigate("/cms");
     } catch (error) {

@@ -89,10 +89,10 @@ Project web-client kalian akan terdiri dari beberapa page/route. Silahkan Implem
   - [v] Halaman Login
   - [v] Halaman list entitas utama
   - [v] Halaman create entitas utama (boleh menggunakan modal)
-  - [ ] Halaman edit entitas utama (boleh menggunakan modal)
-  - [ ] Halaman upload image untuk entitas utama (boleh menggunakan modal)
-  - [ ] Halaman list untuk entitas kedua
-  - [ ] Halaman register staff
+  - [v] Halaman edit entitas utama (boleh menggunakan modal)
+  - [v] Halaman upload image untuk entitas utama (boleh menggunakan modal)
+  - [v] Halaman list untuk entitas kedua
+  - [v] Halaman register staff
 
 ### Deploy Client
 

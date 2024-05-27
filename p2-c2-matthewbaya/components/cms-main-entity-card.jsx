@@ -1,13 +1,12 @@
+import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { deleteArticleById } from "../features/article/articleSlice";
 
 export default function ArticleCard(props) {
+  const dispatch = useDispatch();
   const handleDeleteArticle = (e) => {
-    try {
-      e.preventDefault();
-      props.deleteArticle(props.article.id);
-    } catch (error) {
-      console.log(error);
-    }
+    e.preventDefault();
+    dispatch(deleteArticleById(props.article.id));
   };
   return (
     <>

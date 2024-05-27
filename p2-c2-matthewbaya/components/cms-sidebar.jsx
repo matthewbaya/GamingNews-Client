@@ -1,9 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function CmsSidebar() {
+  const [displayRegister, setDisplayRegister] = useState("");
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("user_role", "Staff")) {
+  //     setDisplayRegister("d-none");
+  //   } else if (localStorage.getItem("user_role", "Admin")) {
+  //     setDisplayRegister("");
+  //   }
+  // }, []);
+
   const handleLogout = () => {
-    localStorage.removeItem("access_token");
+    localStorage.clear();
     navigate("/cms/login");
   };
   return (
@@ -35,7 +46,11 @@ export default function CmsSidebar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/cms/register"} className="nav-link" id="nav-category">
+              <Link
+                to={"/cms/register"}
+                className={"nav-link " + displayRegister}
+                id="nav-category"
+              >
                 <span className="icon material-symbols-outlined me-2">
                   account_circle
                 </span>

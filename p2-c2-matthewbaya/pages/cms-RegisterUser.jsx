@@ -36,7 +36,7 @@ export default function RegisterUserPage() {
     } catch (error) {
       Swal.fire({
         title: "Error",
-        text: error.response.data.message[0],
+        text: error.response.data.message,
         icon: "error",
       });
       console.error(error);
@@ -63,7 +63,7 @@ export default function RegisterUserPage() {
             id="product-section"
           >
             <div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 className="display-2">Categories</h1>
+              <h1 className="display-2">Register New User</h1>
             </div>
             <div className="row">
               <form onSubmit={handleSubmit} className="text-light">
